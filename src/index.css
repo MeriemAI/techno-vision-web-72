@@ -1,5 +1,4 @@
-
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&family=Amiri:wght@400;700&family=Cairo:wght@400;600;700&family=Noto+Sans+Arabic:wght@400;600;700&family=Tajawal:wght@400;500;700&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -89,7 +88,7 @@ body {
   font-feature-settings: "rlig" 1, "calt" 1;
 }
 
-/* Continuous glitch animation for Digital Minds */
+/* Enhanced continuous glitch animation for Digital Minds */
 @keyframes continuous-glitch {
   0% {
     text-shadow: 
@@ -98,68 +97,138 @@ body {
       0.025em 0.04em 0 #ffff00;
     transform: translate(0);
   }
-  10% {
+  5% {
     text-shadow: 
       0.05em 0 0 #00ffff, 
       -0.03em -0.04em 0 #ff00ff, 
       0.025em 0.04em 0 #ffff00;
     transform: translate(2px, 0);
   }
-  20% {
+  10% {
     text-shadow: 
       -0.05em -0.025em 0 #00ffff, 
       0.025em 0.035em 0 #ff00ff, 
       -0.05em -0.05em 0 #ffff00;
     transform: translate(-2px, 0);
   }
-  30% {
+  15% {
     text-shadow: 
       0.05em 0.035em 0 #00ffff, 
       0.03em 0 0 #ff00ff, 
       0 -0.04em 0 #ffff00;
     transform: translate(0);
   }
-  40% {
+  20% {
     text-shadow: 
       -0.05em 0 0 #00ffff, 
       -0.025em -0.04em 0 #ff00ff, 
       -0.04em -0.025em 0 #ffff00;
     transform: translate(1px, 1px);
   }
-  50% {
+  25% {
     text-shadow: 
       0.05em 0 0 #00ffff, 
       -0.03em -0.04em 0 #ff00ff, 
       0.025em 0.04em 0 #ffff00;
     transform: translate(-1px, -1px);
   }
-  60% {
+  30% {
     text-shadow: 
       -0.03em 0.04em 0 #00ffff, 
       0.05em -0.02em 0 #ff00ff, 
       0.02em 0.05em 0 #ffff00;
     transform: translate(2px, -1px);
   }
-  70% {
+  35% {
     text-shadow: 
       0.04em -0.03em 0 #00ffff, 
       -0.02em 0.05em 0 #ff00ff, 
       -0.05em 0.02em 0 #ffff00;
     transform: translate(-2px, 1px);
   }
-  80% {
+  40% {
     text-shadow: 
       0.02em 0.05em 0 #00ffff, 
       0.04em -0.03em 0 #ff00ff, 
       -0.03em -0.04em 0 #ffff00;
     transform: translate(1px, -2px);
   }
-  90% {
+  45% {
     text-shadow: 
       -0.04em -0.02em 0 #00ffff, 
       0.03em 0.04em 0 #ff00ff, 
       0.05em -0.03em 0 #ffff00;
     transform: translate(-1px, 2px);
+  }
+  50% {
+    text-shadow: 
+      0.03em 0 0 #00ffff, 
+      -0.02em -0.03em 0 #ff00ff, 
+      0.02em 0.03em 0 #ffff00;
+    transform: translate(1px, 0);
+  }
+  55% {
+    text-shadow: 
+      -0.02em 0.03em 0 #00ffff, 
+      0.04em -0.01em 0 #ff00ff, 
+      0.01em 0.04em 0 #ffff00;
+    transform: translate(-1px, 1px);
+  }
+  60% {
+    text-shadow: 
+      0.04em -0.02em 0 #00ffff, 
+      -0.01em 0.04em 0 #ff00ff, 
+      -0.04em 0.01em 0 #ffff00;
+    transform: translate(2px, -1px);
+  }
+  65% {
+    text-shadow: 
+      0.01em 0.04em 0 #00ffff, 
+      0.03em -0.02em 0 #ff00ff, 
+      -0.02em -0.03em 0 #ffff00;
+    transform: translate(-2px, 1px);
+  }
+  70% {
+    text-shadow: 
+      -0.03em -0.01em 0 #00ffff, 
+      0.02em 0.03em 0 #ff00ff, 
+      0.04em -0.02em 0 #ffff00;
+    transform: translate(1px, -1px);
+  }
+  75% {
+    text-shadow: 
+      0.02em 0.02em 0 #00ffff, 
+      -0.03em -0.01em 0 #ff00ff, 
+      0.01em 0.03em 0 #ffff00;
+    transform: translate(-1px, 2px);
+  }
+  80% {
+    text-shadow: 
+      -0.01em 0.03em 0 #00ffff, 
+      0.03em -0.01em 0 #ff00ff, 
+      -0.03em 0.01em 0 #ffff00;
+    transform: translate(1px, -2px);
+  }
+  85% {
+    text-shadow: 
+      0.03em -0.01em 0 #00ffff, 
+      -0.01em 0.03em 0 #ff00ff, 
+      0.02em -0.02em 0 #ffff00;
+    transform: translate(-2px, 1px);
+  }
+  90% {
+    text-shadow: 
+      0.01em 0.02em 0 #00ffff, 
+      0.02em -0.01em 0 #ff00ff, 
+      -0.02em -0.02em 0 #ffff00;
+    transform: translate(2px, -1px);
+  }
+  95% {
+    text-shadow: 
+      -0.02em -0.01em 0 #00ffff, 
+      0.01em 0.02em 0 #ff00ff, 
+      0.03em -0.01em 0 #ffff00;
+    transform: translate(-1px, 1px);
   }
   100% {
     text-shadow: 
@@ -171,7 +240,7 @@ body {
 }
 
 .glitch {
-  animation: continuous-glitch 2s linear infinite;
+  animation: continuous-glitch 1.5s linear infinite;
 }
 
 /* Enhanced Matrix rain animation */
@@ -207,7 +276,7 @@ body {
   opacity: 0.7;
 }
 
-/* Enhanced animated grid */
+/* Enhanced animated grid that works everywhere */
 @keyframes grid-wave {
   0%, 100% {
     opacity: 0.3;
@@ -321,42 +390,32 @@ body {
   }
 }
 
-/* Additional fun animations */
-@keyframes rainbow-bg {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-.rainbow-bg {
-  background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab);
-  background-size: 400% 400%;
-  animation: rainbow-bg 4s ease infinite;
-}
-
-@keyframes cosmic-drift {
-  0%, 100% {
-    transform: translateX(0) translateY(0) rotate(0deg);
-  }
-  25% {
-    transform: translateX(10px) translateY(-5px) rotate(90deg);
-  }
-  50% {
-    transform: translateX(-5px) translateY(-10px) rotate(180deg);
-  }
-  75% {
-    transform: translateX(-10px) translateY(5px) rotate(270deg);
-  }
-}
-
-.cosmic-drift {
-  animation: cosmic-drift 20s linear infinite;
-}
-
-/* Arabic font class */
-.arabic-font {
-  font-family: 'Cairo', 'Amiri', 'Noto Sans Arabic', Arial, sans-serif;
-  font-weight: 600;
+/* Elegant Arabic font class - consistent across the site */
+.font-arabic {
+  font-family: 'Tajawal', 'Cairo', 'Noto Sans Arabic', 'Arial', sans-serif;
+  font-weight: 500;
   letter-spacing: 0.02em;
   line-height: 1.6;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Make sure backgrounds are animated site-wide */
+.min-h-screen {
+  position: relative;
+  overflow-x: hidden;
+}
+
+.min-h-screen::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(-45deg, #1a1a2e, #16213e, #0f3460, #533483);
+  background-size: 400% 400%;
+  animation: rainbow-bg 15s ease infinite;
+  z-index: -3;
 }
