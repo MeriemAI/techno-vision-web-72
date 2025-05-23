@@ -13,12 +13,19 @@ interface RegisteredUser {
 
 const Community = () => {
   const [registeredUsers, setRegisteredUsers] = useState<RegisteredUser[]>([]);
+  const [currentUser, setCurrentUser] = useState<RegisteredUser | null>(null);
 
   useEffect(() => {
     // Get registered users from localStorage
     const users = localStorage.getItem('registeredUsers');
     if (users) {
       setRegisteredUsers(JSON.parse(users));
+    }
+
+    // Get current logged-in user
+    const loggedInUser = localStorage.getItem('currentUser');
+    if (loggedInUser) {
+      setCurrentUser(JSON.parse(loggedInUser));
     }
   }, []);
 
@@ -51,11 +58,13 @@ const Community = () => {
               <p className="text-gray-500 mb-8 font-arabic">
                 كن أول من ينضم إلى مجتمعنا الرقمي
               </p>
-              <Link to="/register">
-                <Button className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-4 px-8 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 text-lg font-arabic">
-                  انضم إلى المجتمع
-                </Button>
-              </Link>
+              {!currentUser && (
+                <Link to="/register">
+                  <Button className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-4 px-8 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 text-lg font-arabic">
+                    انضم إلى المجتمع
+                  </Button>
+                </Link>
+              )}
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -74,10 +83,18 @@ const Community = () => {
                           <Users size={32} className="text-white" />
                         </div>
                       )}
+                      {currentUser && currentUser.email === user.email && (
+                        <div className="absolute -top-2 -right-2 bg-yellow-500 text-black rounded-full p-1">
+                          <Crown size={12} />
+                        </div>
+                      )}
                     </div>
                     
                     <h3 className="text-white font-bold text-lg mb-2 font-arabic">
                       {user.name}
+                      {currentUser && currentUser.email === user.email && (
+                        <span className="text-yellow-500 text-sm block">(أنت)</span>
+                      )}
                     </h3>
                     
                     <p className="text-neon-cyan text-sm mb-2">
@@ -93,13 +110,15 @@ const Community = () => {
             </div>
           )}
           
-          <div className="text-center mt-12">
-            <Link to="/register">
-              <Button className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-4 px-8 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 text-lg font-arabic">
-                انضم إلى المجتمع
-              </Button>
-            </Link>
-          </div>
+          {!currentUser && (
+            <div className="text-center mt-12">
+              <Link to="/register">
+                <Button className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-4 px-8 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 text-lg font-arabic">
+                  انضم إلى المجتمع
+                </Button>
+              </Link>
+            </div>
+          )}
         </div>
       </div>
     </div>

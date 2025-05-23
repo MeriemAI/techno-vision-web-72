@@ -53,6 +53,9 @@ const Register = () => {
     const updatedUsers = [...existingUsers, newUser];
     localStorage.setItem('registeredUsers', JSON.stringify(updatedUsers));
 
+    // Set current user as logged in
+    localStorage.setItem('currentUser', JSON.stringify(newUser));
+
     toast({
       title: "تم التسجيل بنجاح!",
       description: "مرحباً بك في مجتمع العقول الرقمية",

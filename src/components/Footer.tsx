@@ -48,8 +48,9 @@ const Footer = () => {
                 <Instagram size={24} />
               </a>
               <a 
-                href="#" 
+                href="mailto:contact@digitalminds.com" 
                 className="text-gray-400 hover:text-neon-purple transition-all duration-300 transform hover:scale-125"
+                title="Contact Us"
               >
                 <Mail size={24} />
               </a>
@@ -93,7 +94,7 @@ const Footer = () => {
               <div className="group">
                 <p className="text-sm text-gray-400 mb-1" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>العنوان</p>
                 <p className="text-gray-300 group-hover:text-white transition-colors duration-300" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
-                  الجزائر، قسنطينة، مسينيسا الخروب
+                  الجزائر، قسنطينة، الخروب-مسينيسا
                 </p>
               </div>
               <div className="group">
