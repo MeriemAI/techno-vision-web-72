@@ -1,11 +1,12 @@
 
 import React from 'react';
-import { Crown, Star, Zap, Rocket, Brain, Code } from 'lucide-react';
+import { Crown, Users } from 'lucide-react';
 
 const TeamSection = () => {
-  const teamRoles = [
+  const teamMembers = [
     {
       role: "رئيس النادي",
+      name: "العضو أحمد",
       title: "قائد الرؤية التقنية",
       icon: Crown,
       description: "يقود فريق العقول الرقمية نحو آفاق جديدة في عالم التكنولوجيا",
@@ -13,44 +14,49 @@ const TeamSection = () => {
       speciality: "الذكاء الاصطناعي والقيادة التقنية"
     },
     {
-      role: "نائب الرئيس",
-      title: "مهندس الابتكار",
-      icon: Star,
-      description: "يحول الأفكار الإبداعية إلى مشاريع تقنية متطورة",
+      role: "عضو",
+      name: "العضو فاطمة",
+      title: "مطورة برمجيات",
+      icon: Users,
+      description: "تساهم في تطوير المشاريع التقنية والحلول البرمجية المبتكرة",
       gradient: "from-neon-green to-neon-cyan",
-      speciality: "تطوير المنتجات وإدارة المشاريع"
+      speciality: "تطوير تطبيقات الويب"
     },
     {
-      role: "مدير التطوير",
-      title: "معمار البرمجيات",
-      icon: Code,
-      description: "يبني الحلول البرمجية المتقدمة بأحدث التقنيات",
+      role: "عضو",
+      name: "العضو محمد",
+      title: "محلل بيانات",
+      icon: Users,
+      description: "يعمل على تحليل البيانات وتطوير نماذج الذكاء الاصطناعي",
       gradient: "from-neon-blue to-neon-purple",
-      speciality: "تطوير البرمجيات والأنظمة المعقدة"
-    },
-    {
-      role: "مدير الابتكار",
-      title: "عالم البيانات",
-      icon: Brain,
-      description: "يحلل البيانات ويطور نماذج الذكاء الاصطناعي المتطورة",
-      gradient: "from-neon-purple to-neon-cyan",
       speciality: "علوم البيانات والتعلم الآلي"
     },
     {
-      role: "مدير التقنية",
-      title: "مهندس الأنظمة",
-      icon: Zap,
-      description: "يصمم البنية التحتية التقنية والحلول السحابية",
+      role: "عضو",
+      name: "العضو سارة",
+      title: "مصممة واجهات",
+      icon: Users,
+      description: "تصمم واجهات مستخدم جذابة وسهلة الاستخدام",
+      gradient: "from-neon-purple to-neon-cyan",
+      speciality: "تصميم تجربة المستخدم"
+    },
+    {
+      role: "عضو",
+      name: "العضو خالد",
+      title: "مهندس أنظمة",
+      icon: Users,
+      description: "يدير البنية التحتية التقنية والحلول السحابية",
       gradient: "from-neon-cyan to-neon-green",
       speciality: "الحوسبة السحابية وأمن المعلومات"
     },
     {
-      role: "مدير المشاريع",
-      title: "رائد الأعمال التقني",
-      icon: Rocket,
-      description: "يحول المشاريع التقنية إلى منتجات قابلة للتسويق",
+      role: "عضو",
+      name: "العضو نور",
+      title: "مطورة تطبيقات",
+      icon: Users,
+      description: "تطور تطبيقات الهاتف المحمول باستخدام أحدث التقنيات",
       gradient: "from-neon-green to-neon-blue",
-      speciality: "ريادة الأعمال والتسويق التقني"
+      speciality: "تطوير تطبيقات الموبايل"
     }
   ];
 
@@ -63,13 +69,13 @@ const TeamSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple"> العقول الرقمية</span>
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-8 rounded-full animate-pulse"></div>
-          <p className="font-poppins text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
             مجموعة من الخبراء والمبدعين الذين يقودون التحول الرقمي
           </p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamRoles.map((member, index) => (
+          {teamMembers.map((member, index) => (
             <div 
               key={index}
               className="group relative"
@@ -95,22 +101,22 @@ const TeamSection = () => {
                   </div>
                   
                   <div className="text-center">
-                    <h3 className="font-orbitron font-bold text-xl text-white mb-2 group-hover:text-neon-cyan transition-colors duration-300">
-                      {member.role}
+                    <h3 className="font-orbitron font-bold text-xl text-white mb-2 group-hover:text-neon-cyan transition-colors duration-300" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
+                      {member.name}
                     </h3>
                     
-                    <p className={`font-poppins text-transparent bg-clip-text bg-gradient-to-r ${member.gradient} font-semibold mb-4 text-lg`}>
+                    <p className={`text-transparent bg-clip-text bg-gradient-to-r ${member.gradient} font-semibold mb-4 text-lg`} style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
                       {member.title}
                     </p>
                     
                     <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-600 rounded-xl p-4 mb-4 group-hover:border-neon-cyan/50 transition-all duration-300">
-                      <p className="font-poppins text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-300">
+                      <p className="text-gray-300 text-sm leading-relaxed group-hover:text-white transition-colors duration-300" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
                         {member.description}
                       </p>
                     </div>
                     
                     <div className="bg-gray-800/50 rounded-lg p-3">
-                      <p className="font-poppins text-neon-cyan text-xs font-medium">
+                      <p className="text-neon-cyan text-xs font-medium" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
                         التخصص: {member.speciality}
                       </p>
                     </div>
