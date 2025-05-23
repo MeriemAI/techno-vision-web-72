@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Brain, Code, Zap, Github, Twitter, Linkedin, Mail } from 'lucide-react';
+import { Brain, Code, Zap, Facebook, Instagram, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
@@ -18,41 +18,51 @@ const Footer = () => {
             <div className="flex items-center mb-6">
               <Brain className="text-neon-cyan mr-3" size={40} />
               <h3 className="font-orbitron font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-blue">
-                Creative Minds
+                Digital Minds
               </h3>
             </div>
-            <p className="font-poppins text-gray-300 leading-relaxed text-lg mb-6">
-              نحن مجتمع من العقول الرقمية المبدعة التي تشكل مستقبل التكنولوجيا.
+            <p className="text-gray-300 leading-relaxed text-lg mb-6" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+              نحن مجتمع من العقول الرقمية المبدعة التي تشكل مستقبل التكنولوgiا.
               <br />
               <span className="text-neon-cyan font-semibold">نبني. نطور. نبدع.</span>
             </p>
             
             {/* Social Links */}
             <div className="flex space-x-6">
-              {[
-                { icon: Github, color: 'hover:text-neon-cyan' },
-                { icon: Twitter, color: 'hover:text-neon-blue' },
-                { icon: Linkedin, color: 'hover:text-neon-green' },
-                { icon: Mail, color: 'hover:text-neon-purple' }
-              ].map((social, index) => (
-                <a 
-                  key={index}
-                  href="#" 
-                  className={`text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-125`}
-                >
-                  <social.icon size={24} />
-                </a>
-              ))}
+              <a 
+                href="https://facebook.com/digitalmindsen" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-neon-cyan transition-all duration-300 transform hover:scale-125"
+                title="Digital Minds Facebook"
+              >
+                <Facebook size={24} />
+              </a>
+              <a 
+                href="https://instagram.com/digitalmindsen" 
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-400 hover:text-neon-blue transition-all duration-300 transform hover:scale-125"
+                title="Digital Minds Instagram"
+              >
+                <Instagram size={24} />
+              </a>
+              <a 
+                href="#" 
+                className="text-gray-400 hover:text-neon-purple transition-all duration-300 transform hover:scale-125"
+              >
+                <Mail size={24} />
+              </a>
             </div>
           </div>
           
           {/* Quick Links */}
           <div>
-            <h4 className="font-orbitron font-bold text-xl text-white mb-6 flex items-center">
+            <h4 className="font-orbitron font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-6 flex items-center">
               <Code className="text-neon-green mr-2" size={20} />
-              روابط سريعة
+              <span style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>روابط سريعة</span>
             </h4>
-            <ul className="space-y-3 font-poppins text-gray-300">
+            <ul className="space-y-3 text-gray-300">
               {[
                 'الرئيسية',
                 'من نحن',
@@ -64,6 +74,7 @@ const Footer = () => {
                   <a 
                     href="#" 
                     className="hover:text-neon-cyan transition-colors duration-300 hover:translate-x-2 transform inline-block"
+                    style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
                   >
                     {link}
                   </a>
@@ -74,15 +85,27 @@ const Footer = () => {
           
           {/* Contact Info */}
           <div>
-            <h4 className="font-orbitron font-bold text-xl text-white mb-6 flex items-center">
+            <h4 className="font-orbitron font-bold text-xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-6 flex items-center">
               <Zap className="text-neon-purple mr-2" size={20} />
-              تواصل معنا
+              <span style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>تواصل معنا</span>
             </h4>
-            <div className="space-y-4 font-poppins text-gray-300">
+            <div className="space-y-4 text-gray-300">
               <div className="group">
-                <p className="text-sm text-gray-400 mb-1">العنوان</p>
-                <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                <p className="text-sm text-gray-400 mb-1" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>العنوان</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors duration-300" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
                   الجزائر، قسنطينة، مسينيسا الخروب
+                </p>
+              </div>
+              <div className="group">
+                <p className="text-sm text-gray-400 mb-1" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>فيسبوك</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                  Digital Minds
+                </p>
+              </div>
+              <div className="group">
+                <p className="text-sm text-gray-400 mb-1" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>انستغرام</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                  Digital Minds
                 </p>
               </div>
             </div>
@@ -92,13 +115,13 @@ const Footer = () => {
         {/* Bottom Section */}
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
-            <p className="font-poppins text-gray-400 mb-4 md:mb-0">
-              © 2024 Creative Minds. جميع الحقوق محفوظة.
+            <p className="text-gray-400 mb-4 md:mb-0" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+              © 2025 Digital Minds. جميع الحقوق محفوظة.
             </p>
             <div className="flex items-center space-x-4 text-sm text-gray-400">
-              <span>صنع بـ</span>
+              <span style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>صنع بـ</span>
               <span className="text-red-400 animate-pulse">♥</span>
-              <span>من فريق العقول المبدعة</span>
+              <span style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>من فريق العقول الرقمية</span>
             </div>
           </div>
         </div>

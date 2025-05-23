@@ -43,16 +43,16 @@ const AboutSection = () => {
   ];
 
   return (
-    <section className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-gray-900/30 to-gray-900/60">
+    <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 relative bg-gradient-to-b from-gray-900/30 to-gray-900/60">
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-20 animate-slide-up">
-          <h2 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-6xl text-white mb-8">
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-blue">
-              Creative Minds
+          <h2 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-6xl mb-8">
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400">
+              Digital Minds
             </span>
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-neon-cyan to-neon-blue mx-auto mb-8 rounded-full"></div>
-          <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
+          <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
             مجتمع من المبدعين والمطورين الذين يشكلون مستقبل التكنولوجيا
             <br />
             <span className="text-neon-cyan font-semibold">نحن لا نتبع الاتجاهات، بل نخلقها</span>

@@ -1,6 +1,7 @@
 
 import React, { useEffect } from 'react';
-import AnimatedBackground from '@/components/AnimatedBackground';
+import EnhancedAnimatedBackground from '@/components/EnhancedAnimatedBackground';
+import Navigation from '@/components/Navigation';
 import HeroSection from '@/components/HeroSection';
 import AboutSection from '@/components/AboutSection';
 import GoalsSection from '@/components/GoalsSection';
@@ -11,9 +12,9 @@ import Footer from '@/components/Footer';
 
 const Index = () => {
   useEffect(() => {
-    // Add Afeesh font
+    // Add Noto Sans Arabic font for better Arabic display
     const link = document.createElement('link');
-    link.href = 'https://fonts.googleapis.com/css2?family=Afeesh:wght@400;600;700&display=swap';
+    link.href = 'https://fonts.googleapis.com/css2?family=Noto+Sans+Arabic:wght@400;600;700&display=swap';
     link.rel = 'stylesheet';
     document.head.appendChild(link);
 
@@ -42,7 +43,8 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-x-hidden">
-      <AnimatedBackground />
+      <EnhancedAnimatedBackground />
+      <Navigation />
       
       <main className="relative z-10">
         <HeroSection />
