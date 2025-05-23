@@ -7,25 +7,25 @@ const TeamSection = () => {
   const [showMales, setShowMales] = useState(false);
 
   const femaleMembers = [
-    "Professor Harakati Ikhlasse",
-    "Meriem Bensaad", 
-    "Benmadani Taouba Hibat Al-Rahman",
-    "Alaa Boulaarouk",
-    "Drif Rahma Aseel",
-    "Razeen Amani",
-    "Zerman Marwa",
-    "Amrani Douaa",
-    "Boulnouar Hadil",
-    "Bouchibi Rim"
+    "الأستاذة حركاتي إخلاص",
+    "مريم بن سعد", 
+    "بن مداني توبة هبة الرحمان",
+    "ألاء بولعروق",
+    "ظريف رحمة أسيل",
+    "رزين أماني",
+    "زرمان مروى",
+    "عمراني دعاء",
+    "بولنوار هديل",
+    "بوشيبي ريم"
   ];
 
   const maleMembers = [
-    "Professor Lamara Mohamed Amin",
-    "Ben Arab Ahmed Khalil",
-    "Djebli Youssef",
-    "Zaidi Youssef", 
-    "Hadji Omar",
-    "Haddad Louay"
+    "الأستاذ لعمارة محمد أمين",
+    "بن عراب أحمد خليل",
+    "جبلي يوسف",
+    "زايدي يوسف", 
+    "حاجي عمر",
+    "حداد لؤي"
   ];
 
   return (
@@ -42,9 +42,9 @@ const TeamSection = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
+        <div className="flex flex-col items-center gap-8">
           {/* Club President */}
-          <div className="lg:col-span-3 flex justify-center mb-8">
+          <div className="flex justify-center mb-8">
             <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-neon-cyan transition-all duration-500 transform hover:scale-105 max-w-md w-full">
               <div className="text-center">
                 <div className="relative mb-6 mx-auto w-20 h-20 flex items-center justify-center">
@@ -57,77 +57,80 @@ const TeamSection = () => {
                 </p>
                 
                 <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-600 rounded-xl p-4">
-                  <p className="text-white text-lg font-bold">
-                    Raed Boulkharfane
+                  <p className="text-white text-lg font-bold arabic-font">
+                    رائد بولخرفان
                   </p>
                 </div>
               </div>
             </div>
           </div>
 
-          {/* Female Members */}
-          <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-neon-purple transition-all duration-500">
-            <div className="text-center">
-              <div className="relative mb-6 mx-auto w-20 h-20 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full opacity-40 animate-pulse"></div>
-                <Users size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue relative z-10" />
-              </div>
-              
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue font-semibold mb-4 text-lg arabic-font">
-                العضوات
-              </p>
-              
-              <button 
-                onClick={() => setShowFemales(!showFemales)}
-                className="w-full bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 border border-neon-purple text-neon-purple py-2 px-4 rounded-lg hover:from-neon-purple hover:to-neon-blue hover:text-black transition-all duration-300 font-semibold arabic-font"
-              >
-                {showFemales ? 'إخفاء الأسماء' : 'عرض الأسماء'}
-              </button>
-
-              {showFemales && (
-                <div className="mt-4 bg-gray-900/50 rounded-lg p-4 border border-neon-purple/30">
-                  <ul className="space-y-2">
-                    {femaleMembers.map((member, index) => (
-                      <li key={index} className="text-gray-300 text-sm">
-                        • {member}
-                      </li>
-                    ))}
-                  </ul>
+          {/* Members Section */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 w-full max-w-4xl">
+            {/* Female Members */}
+            <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-neon-purple transition-all duration-500">
+              <div className="text-center">
+                <div className="relative mb-6 mx-auto w-20 h-20 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-neon-purple to-neon-blue rounded-full opacity-40 animate-pulse"></div>
+                  <Users size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue relative z-10" />
                 </div>
-              )}
+                
+                <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue font-semibold mb-4 text-lg arabic-font">
+                  العضوات
+                </p>
+                
+                <button 
+                  onClick={() => setShowFemales(!showFemales)}
+                  className="w-full bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 border border-neon-purple text-neon-purple py-2 px-4 rounded-lg hover:from-neon-purple hover:to-neon-blue hover:text-black transition-all duration-300 font-semibold arabic-font"
+                >
+                  {showFemales ? 'إخفاء الأسماء' : 'عرض الأسماء'}
+                </button>
+
+                {showFemales && (
+                  <div className="mt-4 bg-gray-900/50 rounded-lg p-4 border border-neon-purple/30">
+                    <ul className="space-y-2">
+                      {femaleMembers.map((member, index) => (
+                        <li key={index} className="text-gray-300 text-sm arabic-font">
+                          • {member}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
-          </div>
 
-          {/* Male Members */}
-          <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-neon-green transition-all duration-500">
-            <div className="text-center">
-              <div className="relative mb-6 mx-auto w-20 h-20 flex items-center justify-center">
-                <div className="absolute inset-0 bg-gradient-to-r from-neon-green to-neon-cyan rounded-full opacity-40 animate-pulse"></div>
-                <Users size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan relative z-10" />
-              </div>
-              
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan font-semibold mb-4 text-lg arabic-font">
-                الأعضاء
-              </p>
-              
-              <button 
-                onClick={() => setShowMales(!showMales)}
-                className="w-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 border border-neon-green text-neon-green py-2 px-4 rounded-lg hover:from-neon-green hover:to-neon-cyan hover:text-black transition-all duration-300 font-semibold arabic-font"
-              >
-                {showMales ? 'إخفاء الأسماء' : 'عرض الأسماء'}
-              </button>
-
-              {showMales && (
-                <div className="mt-4 bg-gray-900/50 rounded-lg p-4 border border-neon-green/30">
-                  <ul className="space-y-2">
-                    {maleMembers.map((member, index) => (
-                      <li key={index} className="text-gray-300 text-sm">
-                        • {member}
-                      </li>
-                    ))}
-                  </ul>
+            {/* Male Members */}
+            <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-8 hover:border-neon-green transition-all duration-500">
+              <div className="text-center">
+                <div className="relative mb-6 mx-auto w-20 h-20 flex items-center justify-center">
+                  <div className="absolute inset-0 bg-gradient-to-r from-neon-green to-neon-cyan rounded-full opacity-40 animate-pulse"></div>
+                  <Users size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan relative z-10" />
                 </div>
-              )}
+                
+                <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan font-semibold mb-4 text-lg arabic-font">
+                  الأعضاء
+                </p>
+                
+                <button 
+                  onClick={() => setShowMales(!showMales)}
+                  className="w-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 border border-neon-green text-neon-green py-2 px-4 rounded-lg hover:from-neon-green hover:to-neon-cyan hover:text-black transition-all duration-300 font-semibold arabic-font"
+                >
+                  {showMales ? 'إخفاء الأسماء' : 'عرض الأسماء'}
+                </button>
+
+                {showMales && (
+                  <div className="mt-4 bg-gray-900/50 rounded-lg p-4 border border-neon-green/30">
+                    <ul className="space-y-2">
+                      {maleMembers.map((member, index) => (
+                        <li key={index} className="text-gray-300 text-sm arabic-font">
+                          • {member}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+              </div>
             </div>
           </div>
         </div>
