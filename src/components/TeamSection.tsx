@@ -7,25 +7,25 @@ const TeamSection = () => {
   const [showMales, setShowMales] = useState(false);
 
   const femaleMembers = [
-    "أستاذة هراكتي اخلاص",
-    "مريم بن سعد", 
-    "بن مدني طوبة هبة الرحمن",
-    "علاء بولعروق",
-    "زارف رحمة اسيل",
-    "رزين اماني",
-    "زرمان مروة",
-    "عمراني دعاء",
-    "بولنوار هديل",
-    "بوشعبي ريم"
+    "Professor Harakati Ikhlasse",
+    "Meriem Bensaad", 
+    "Benmadani Taouba Hibat Al-Rahman",
+    "Alaa Boulaarouk",
+    "Drif Rahma Aseel",
+    "Razeen Amani",
+    "Zerman Marwa",
+    "Amrani Douaa",
+    "Boulnouar Hadil",
+    "Bouchibi Rim"
   ];
 
   const maleMembers = [
-    "أستاذ لعمارة محمد أمين",
-    "بن عرب أحمد خليل",
-    "جبلي يوسف",
-    "زايدي يوسف", 
-    "حجي عمر",
-    "حداد لؤي"
+    "Professor Lamara Mohamed Amin",
+    "Ben Arab Ahmed Khalil",
+    "Djebli Youssef",
+    "Zaidi Youssef", 
+    "Hadji Omar",
+    "Haddad Louay"
   ];
 
   return (
@@ -37,7 +37,7 @@ const TeamSection = () => {
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400"> العقول الرقمية</span>
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-8 rounded-full animate-pulse"></div>
-          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+          <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed arabic-font">
             مجموعة من الخبراء والمبدعين الذين يقودون التحول الرقمي
           </p>
         </div>
@@ -52,13 +52,13 @@ const TeamSection = () => {
                   <Crown size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple relative z-10" />
                 </div>
                 
-                <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple font-semibold mb-4 text-xl" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+                <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple font-semibold mb-4 text-xl arabic-font">
                   رئيس النادي
                 </p>
                 
                 <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-600 rounded-xl p-4">
-                  <p className="text-white text-lg font-bold" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
-                    راعد بولخرفان
+                  <p className="text-white text-lg font-bold">
+                    Raed Boulkharfane
                   </p>
                 </div>
               </div>
@@ -73,14 +73,13 @@ const TeamSection = () => {
                 <Users size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue relative z-10" />
               </div>
               
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue font-semibold mb-4 text-lg" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+              <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-purple to-neon-blue font-semibold mb-4 text-lg arabic-font">
                 العضوات
               </p>
               
               <button 
                 onClick={() => setShowFemales(!showFemales)}
-                className="w-full bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 border border-neon-purple text-neon-purple py-2 px-4 rounded-lg hover:from-neon-purple hover:to-neon-blue hover:text-black transition-all duration-300 font-semibold"
-                style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
+                className="w-full bg-gradient-to-r from-neon-purple/20 to-neon-blue/20 border border-neon-purple text-neon-purple py-2 px-4 rounded-lg hover:from-neon-purple hover:to-neon-blue hover:text-black transition-all duration-300 font-semibold arabic-font"
               >
                 {showFemales ? 'إخفاء الأسماء' : 'عرض الأسماء'}
               </button>
@@ -89,7 +88,7 @@ const TeamSection = () => {
                 <div className="mt-4 bg-gray-900/50 rounded-lg p-4 border border-neon-purple/30">
                   <ul className="space-y-2">
                     {femaleMembers.map((member, index) => (
-                      <li key={index} className="text-gray-300 text-sm" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+                      <li key={index} className="text-gray-300 text-sm">
                         • {member}
                       </li>
                     ))}
@@ -107,14 +106,13 @@ const TeamSection = () => {
                 <Users size={40} className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan relative z-10" />
               </div>
               
-              <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan font-semibold mb-4 text-lg" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+              <p className="text-transparent bg-clip-text bg-gradient-to-r from-neon-green to-neon-cyan font-semibold mb-4 text-lg arabic-font">
                 الأعضاء
               </p>
               
               <button 
                 onClick={() => setShowMales(!showMales)}
-                className="w-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 border border-neon-green text-neon-green py-2 px-4 rounded-lg hover:from-neon-green hover:to-neon-cyan hover:text-black transition-all duration-300 font-semibold"
-                style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
+                className="w-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 border border-neon-green text-neon-green py-2 px-4 rounded-lg hover:from-neon-green hover:to-neon-cyan hover:text-black transition-all duration-300 font-semibold arabic-font"
               >
                 {showMales ? 'إخفاء الأسماء' : 'عرض الأسماء'}
               </button>
@@ -123,7 +121,7 @@ const TeamSection = () => {
                 <div className="mt-4 bg-gray-900/50 rounded-lg p-4 border border-neon-green/30">
                   <ul className="space-y-2">
                     {maleMembers.map((member, index) => (
-                      <li key={index} className="text-gray-300 text-sm" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+                      <li key={index} className="text-gray-300 text-sm">
                         • {member}
                       </li>
                     ))}

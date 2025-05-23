@@ -20,7 +20,7 @@ const Navigation = () => {
           </div>
           
           <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-            <span className="text-sm text-gray-300 font-semibold" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+            <span className="text-sm text-gray-300 font-semibold arabic-font">
               العقول الرقمية - ثانوية بوهارة عبد الرزاق
             </span>
           </div>
@@ -30,8 +30,7 @@ const Navigation = () => {
               <a
                 key={index}
                 href={item.href}
-                className="text-gray-300 hover:text-neon-cyan transition-colors duration-300 text-sm font-medium"
-                style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
+                className="text-gray-300 hover:text-neon-cyan transition-colors duration-300 text-sm font-medium arabic-font"
               >
                 {item.name}
               </a>

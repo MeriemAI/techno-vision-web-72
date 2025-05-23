@@ -22,6 +22,7 @@ export default {
 			fontFamily: {
 				'orbitron': ['Orbitron', 'sans-serif'],
 				'poppins': ['Poppins', 'sans-serif'],
+				'arabic': ['Cairo', 'Amiri', 'Noto Sans Arabic', 'Arial', 'sans-serif'],
 			},
 			colors: {
 				border: 'hsl(var(--border))',

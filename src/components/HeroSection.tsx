@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
@@ -27,7 +26,7 @@ const HeroSection = () => {
           <div className="h-1 w-32 bg-gradient-to-r from-neon-cyan to-neon-blue mx-auto mb-6 rounded-full animate-pulse"></div>
         </div>
         
-        <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+        <p className="text-xl sm:text-2xl md:text-3xl text-gray-300 mb-8 max-w-3xl mx-auto leading-relaxed arabic-font">
           <span className="text-neon-cyan font-semibold">نبني المستقبل الرقمي</span> بأفكار مبتكرة وتقنيات متطورة
           <br />
           <span className="text-lg text-gray-400 mt-2 block">حيث تلتقي العقول المبدعة لتشكيل عالم الغد</span>
@@ -37,8 +36,7 @@ const HeroSection = () => {
           <Button 
             size="lg" 
             onClick={handleJoinClick}
-            className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-6 px-10 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 hover:rotate-2 text-xl shadow-2xl"
-            style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
+            className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-6 px-10 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 hover:rotate-2 text-xl shadow-2xl arabic-font"
           >
             انضم للعقول الرقمية
           </Button>
@@ -46,8 +44,7 @@ const HeroSection = () => {
             variant="outline" 
             size="lg"
             onClick={handleCreativeWorldClick}
-            className="border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black py-6 px-10 rounded-full transition-all duration-500 transform hover:scale-110 hover:-rotate-2 text-xl bg-gray-900/30 backdrop-blur-sm"
-            style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
+            className="border-2 border-neon-green text-neon-green hover:bg-neon-green hover:text-black py-6 px-10 rounded-full transition-all duration-500 transform hover:scale-110 hover:-rotate-2 text-xl bg-gray-900/30 backdrop-blur-sm arabic-font"
           >
             اكتشف عالمنا الرقمي
           </Button>
