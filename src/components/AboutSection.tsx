@@ -48,11 +48,11 @@ const AboutSection = () => {
         <div className="text-center mb-20 animate-slide-up">
           <h2 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-6xl text-white mb-8">
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-blue">
-              Digital Minds
+              Creative Minds
             </span>
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-neon-cyan to-neon-blue mx-auto mb-8 rounded-full"></div>
-          <p className="font-poppins text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed">
+          <p className="text-xl sm:text-2xl text-gray-300 max-w-4xl mx-auto leading-relaxed" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
             مجتمع من المبدعين والمطورين الذين يشكلون مستقبل التكنولوجيا
             <br />
             <span className="text-neon-cyan font-semibold">نحن لا نتبع الاتجاهات، بل نخلقها</span>
@@ -75,11 +75,11 @@ const AboutSection = () => {
                   <feature.icon size={56} />
                 </div>
                 
-                <h3 className="font-orbitron font-bold text-2xl text-white mb-4 group-hover:text-neon-cyan transition-colors duration-300">
+                <h3 className="font-bold text-2xl text-white mb-4 group-hover:text-neon-cyan transition-colors duration-300" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
                   {feature.title}
                 </h3>
                 
-                <p className="font-poppins text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300">
+                <p className="text-gray-300 leading-relaxed group-hover:text-white transition-colors duration-300" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
                   {feature.description}
                 </p>
               </div>

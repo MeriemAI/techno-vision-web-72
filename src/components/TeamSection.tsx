@@ -6,25 +6,22 @@ const TeamSection = () => {
   const teamMembers = [
     {
       role: "رئيس النادي",
-      name: "العضو أحمد",
       title: "قائد الرؤية التقنية",
       icon: Crown,
-      description: "يقود فريق العقول الرقمية نحو آفاق جديدة في عالم التكنولوجيا",
+      description: "يقود فريق العقول المبدعة نحو آفاق جديدة في عالم التكنولوجيا",
       gradient: "from-neon-cyan to-neon-blue",
       speciality: "الذكاء الاصطناعي والقيادة التقنية"
     },
     {
       role: "عضو",
-      name: "العضو فاطمة",
-      title: "مطورة برمجيات",
+      title: "مطور برمجيات",
       icon: Users,
-      description: "تساهم في تطوير المشاريع التقنية والحلول البرمجية المبتكرة",
+      description: "يساهم في تطوير المشاريع التقنية والحلول البرمجية المبتكرة",
       gradient: "from-neon-green to-neon-cyan",
       speciality: "تطوير تطبيقات الويب"
     },
     {
       role: "عضو",
-      name: "العضو محمد",
       title: "محلل بيانات",
       icon: Users,
       description: "يعمل على تحليل البيانات وتطوير نماذج الذكاء الاصطناعي",
@@ -33,16 +30,14 @@ const TeamSection = () => {
     },
     {
       role: "عضو",
-      name: "العضو سارة",
-      title: "مصممة واجهات",
+      title: "مصمم واجهات",
       icon: Users,
-      description: "تصمم واجهات مستخدم جذابة وسهلة الاستخدام",
+      description: "يصمم واجهات مستخدم جذابة وسهلة الاستخدام",
       gradient: "from-neon-purple to-neon-cyan",
       speciality: "تصميم تجربة المستخدم"
     },
     {
       role: "عضو",
-      name: "العضو خالد",
       title: "مهندس أنظمة",
       icon: Users,
       description: "يدير البنية التحتية التقنية والحلول السحابية",
@@ -51,10 +46,9 @@ const TeamSection = () => {
     },
     {
       role: "عضو",
-      name: "العضو نور",
-      title: "مطورة تطبيقات",
+      title: "مطور تطبيقات",
       icon: Users,
-      description: "تطور تطبيقات الهاتف المحمول باستخدام أحدث التقنيات",
+      description: "يطور تطبيقات الهاتف المحمول باستخدام أحدث التقنيات",
       gradient: "from-neon-green to-neon-blue",
       speciality: "تطوير تطبيقات الموبايل"
     }
@@ -66,7 +60,7 @@ const TeamSection = () => {
         <div className="text-center mb-20">
           <h2 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-6xl text-white mb-8">
             فريق
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple"> العقول الرقمية</span>
+            <span className="text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-purple"> العقول المبدعة</span>
           </h2>
           <div className="h-1 w-32 bg-gradient-to-r from-neon-cyan to-neon-purple mx-auto mb-8 rounded-full animate-pulse"></div>
           <p className="text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
@@ -101,10 +95,6 @@ const TeamSection = () => {
                   </div>
                   
                   <div className="text-center">
-                    <h3 className="font-orbitron font-bold text-xl text-white mb-2 group-hover:text-neon-cyan transition-colors duration-300" style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
-                      {member.name}
-                    </h3>
-                    
                     <p className={`text-transparent bg-clip-text bg-gradient-to-r ${member.gradient} font-semibold mb-4 text-lg`} style={{fontFamily: 'Afeesh, Arial, sans-serif'}}>
                       {member.title}
                     </p>
