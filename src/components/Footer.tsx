@@ -18,7 +18,7 @@ const Footer = () => {
             <div className="flex items-center mb-6">
               <Brain className="text-neon-cyan mr-3" size={40} />
               <h3 className="font-orbitron font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-blue">
-                Digital Minds
+                Creative Minds
               </h3>
             </div>
             <p className="font-poppins text-gray-300 leading-relaxed text-lg mb-6">
@@ -80,21 +80,9 @@ const Footer = () => {
             </h4>
             <div className="space-y-4 font-poppins text-gray-300">
               <div className="group">
-                <p className="text-sm text-gray-400 mb-1">البريد الإلكتروني</p>
-                <p className="text-neon-cyan group-hover:text-neon-blue transition-colors duration-300">
-                  info@digitalminds.com
-                </p>
-              </div>
-              <div className="group">
-                <p className="text-sm text-gray-400 mb-1">الهاتف</p>
-                <p className="text-neon-green group-hover:text-neon-cyan transition-colors duration-300">
-                  +966 50 123 4567
-                </p>
-              </div>
-              <div className="group">
                 <p className="text-sm text-gray-400 mb-1">العنوان</p>
                 <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
-                  الرياض، المملكة العربية السعودية
+                  الجزائر، قسنطينة، مسينيسا الخروب
                 </p>
               </div>
             </div>
@@ -105,12 +93,12 @@ const Footer = () => {
         <div className="border-t border-gray-700 mt-12 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="font-poppins text-gray-400 mb-4 md:mb-0">
-              © 2024 Digital Minds. جميع الحقوق محفوظة.
+              © 2024 Creative Minds. جميع الحقوق محفوظة.
             </p>
             <div className="flex items-center space-x-4 text-sm text-gray-400">
               <span>صنع بـ</span>
               <span className="text-red-400 animate-pulse">♥</span>
-              <span>من فريق العقول الرقمية</span>
+              <span>من فريق العقول المبدعة</span>
             </div>
           </div>
         </div>
