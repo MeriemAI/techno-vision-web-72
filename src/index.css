@@ -95,7 +95,7 @@
   }
 }
 
-/* Matrix rain animation */
+/* Enhanced Matrix rain animation */
 @keyframes matrix-rain {
   0% {
     transform: translateY(-100vh);
@@ -124,74 +124,143 @@
   font-family: 'Courier New', monospace;
   font-size: 14px;
   animation: matrix-rain linear infinite;
+  text-shadow: 0 0 5px #00ff41;
 }
 
-/* Grid animation */
+/* Enhanced Grid animation */
 @keyframes grid-pulse {
   0%, 100% {
-    opacity: 0.3;
+    opacity: 0.2;
   }
   50% {
-    opacity: 0.8;
+    opacity: 0.6;
   }
 }
 
 .grid-bg {
   background-image: 
-    linear-gradient(rgba(0, 255, 255, 0.1) 1px, transparent 1px),
-    linear-gradient(90deg, rgba(0, 255, 255, 0.1) 1px, transparent 1px);
-  background-size: 50px 50px;
-  animation: grid-pulse 3s ease-in-out infinite;
+    linear-gradient(rgba(0, 255, 255, 0.15) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 255, 255, 0.15) 1px, transparent 1px);
+  background-size: 60px 60px;
+  animation: grid-pulse 4s ease-in-out infinite;
 }
 
-/* Floating particles */
+/* Enhanced floating particles */
 @keyframes float {
   0%, 100% {
-    transform: translateY(0px);
+    transform: translateY(0px) rotateZ(0deg);
+  }
+  25% {
+    transform: translateY(-15px) rotateZ(90deg);
   }
   50% {
-    transform: translateY(-20px);
+    transform: translateY(-30px) rotateZ(180deg);
+  }
+  75% {
+    transform: translateY(-15px) rotateZ(270deg);
   }
 }
 
 .floating-particle {
-  animation: float 6s ease-in-out infinite;
+  animation: float 8s ease-in-out infinite;
+  filter: blur(0.5px);
 }
 
-/* Glitch effect */
+/* Enhanced glitch effect */
 @keyframes glitch {
   0% {
-    text-shadow: 0.05em 0 0 #00ffff, -0.03em -0.04em 0 #ff00ff, 0.025em 0.04em 0 #ffff00;
+    text-shadow: 
+      0.05em 0 0 #00ffff, 
+      -0.03em -0.04em 0 #ff00ff, 
+      0.025em 0.04em 0 #ffff00;
   }
   15% {
-    text-shadow: 0.05em 0 0 #00ffff, -0.03em -0.04em 0 #ff00ff, 0.025em 0.04em 0 #ffff00;
+    text-shadow: 
+      0.05em 0 0 #00ffff, 
+      -0.03em -0.04em 0 #ff00ff, 
+      0.025em 0.04em 0 #ffff00;
   }
   16% {
-    text-shadow: -0.05em -0.025em 0 #00ffff, 0.025em 0.035em 0 #ff00ff, -0.05em -0.05em 0 #ffff00;
+    text-shadow: 
+      -0.05em -0.025em 0 #00ffff, 
+      0.025em 0.035em 0 #ff00ff, 
+      -0.05em -0.05em 0 #ffff00;
   }
   49% {
-    text-shadow: -0.05em -0.025em 0 #00ffff, 0.025em 0.035em 0 #ff00ff, -0.05em -0.05em 0 #ffff00;
+    text-shadow: 
+      -0.05em -0.025em 0 #00ffff, 
+      0.025em 0.035em 0 #ff00ff, 
+      -0.05em -0.05em 0 #ffff00;
   }
   50% {
-    text-shadow: 0.05em 0.035em 0 #00ffff, 0.03em 0 0 #ff00ff, 0 -0.04em 0 #ffff00;
+    text-shadow: 
+      0.05em 0.035em 0 #00ffff, 
+      0.03em 0 0 #ff00ff, 
+      0 -0.04em 0 #ffff00;
   }
   99% {
-    text-shadow: 0.05em 0.035em 0 #00ffff, 0.03em 0 0 #ff00ff, 0 -0.04em 0 #ffff00;
+    text-shadow: 
+      0.05em 0.035em 0 #00ffff, 
+      0.03em 0 0 #ff00ff, 
+      0 -0.04em 0 #ffff00;
   }
   100% {
-    text-shadow: -0.05em 0 0 #00ffff, -0.025em -0.04em 0 #ff00ff, -0.04em -0.025em 0 #ffff00;
+    text-shadow: 
+      -0.05em 0 0 #00ffff, 
+      -0.025em -0.04em 0 #ff00ff, 
+      -0.04em -0.025em 0 #ffff00;
   }
 }
 
 .glitch {
-  animation: glitch 1s linear infinite;
+  animation: glitch 2s linear infinite;
 }
 
-/* Neon glow */
+/* Enhanced neon effects */
 .neon-glow {
-  box-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff;
+  box-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor,
+    0 0 25px currentColor;
+  filter: brightness(1.2);
 }
 
 .neon-text {
-  text-shadow: 0 0 5px #00ffff, 0 0 10px #00ffff, 0 0 15px #00ffff, 0 0 20px #00ffff;
+  text-shadow: 
+    0 0 5px currentColor,
+    0 0 10px currentColor,
+    0 0 15px currentColor,
+    0 0 20px currentColor,
+    0 0 25px currentColor;
+}
+
+/* Additional animations */
+@keyframes rotate-glow {
+  0% {
+    transform: rotate(0deg);
+    filter: hue-rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+    filter: hue-rotate(360deg);
+  }
+}
+
+.rotate-glow {
+  animation: rotate-glow 10s linear infinite;
+}
+
+@keyframes pulse-scale {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.pulse-scale {
+  animation: pulse-scale 3s ease-in-out infinite;
 }

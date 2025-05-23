@@ -1,48 +1,118 @@
 
 import React from 'react';
+import { Brain, Code, Zap, Github, Twitter, Linkedin, Mail } from 'lucide-react';
 
 const Footer = () => {
   return (
-    <footer className="bg-gray-900/80 backdrop-blur-sm border-t border-gray-700 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-6xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div>
-            <h3 className="font-orbitron font-bold text-xl text-white mb-4">
-              نادي تقنية المعلومات
-            </h3>
-            <p className="font-poppins text-gray-300 leading-relaxed">
-              نحن نسعى لبناء جيل واعد من المبرمجين والمطورين الذين يقودون المستقبل التقني
+    <footer className="bg-gray-900/90 backdrop-blur-sm border-t border-gray-700 py-16 px-4 sm:px-6 lg:px-8 relative overflow-hidden">
+      {/* Animated background elements */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none">
+        <div className="absolute top-10 left-1/4 w-20 h-20 border border-neon-cyan/10 rounded-full animate-pulse"></div>
+        <div className="absolute bottom-10 right-1/4 w-16 h-16 border border-neon-green/10 rotate-45 animate-spin" style={{animationDuration: '20s'}}></div>
+      </div>
+
+      <div className="max-w-7xl mx-auto relative z-10">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12">
+          {/* Brand Section */}
+          <div className="lg:col-span-2">
+            <div className="flex items-center mb-6">
+              <Brain className="text-neon-cyan mr-3" size={40} />
+              <h3 className="font-orbitron font-bold text-3xl text-transparent bg-clip-text bg-gradient-to-r from-neon-cyan to-neon-blue">
+                Digital Minds
+              </h3>
+            </div>
+            <p className="font-poppins text-gray-300 leading-relaxed text-lg mb-6">
+              نحن مجتمع من العقول الرقمية المبدعة التي تشكل مستقبل التكنولوجيا.
+              <br />
+              <span className="text-neon-cyan font-semibold">نبني. نطور. نبدع.</span>
             </p>
+            
+            {/* Social Links */}
+            <div className="flex space-x-6">
+              {[
+                { icon: Github, color: 'hover:text-neon-cyan' },
+                { icon: Twitter, color: 'hover:text-neon-blue' },
+                { icon: Linkedin, color: 'hover:text-neon-green' },
+                { icon: Mail, color: 'hover:text-neon-purple' }
+              ].map((social, index) => (
+                <a 
+                  key={index}
+                  href="#" 
+                  className={`text-gray-400 ${social.color} transition-all duration-300 transform hover:scale-125`}
+                >
+                  <social.icon size={24} />
+                </a>
+              ))}
+            </div>
           </div>
           
+          {/* Quick Links */}
           <div>
-            <h4 className="font-orbitron font-bold text-lg text-white mb-4">
+            <h4 className="font-orbitron font-bold text-xl text-white mb-6 flex items-center">
+              <Code className="text-neon-green mr-2" size={20} />
               روابط سريعة
             </h4>
-            <ul className="space-y-2 font-poppins text-gray-300">
-              <li><a href="#" className="hover:text-neon-cyan transition-colors duration-300">الرئيسية</a></li>
-              <li><a href="#" className="hover:text-neon-cyan transition-colors duration-300">من نحن</a></li>
-              <li><a href="#" className="hover:text-neon-cyan transition-colors duration-300">الفعاليات</a></li>
-              <li><a href="#" className="hover:text-neon-cyan transition-colors duration-300">المشاريع</a></li>
+            <ul className="space-y-3 font-poppins text-gray-300">
+              {[
+                'الرئيسية',
+                'من نحن',
+                'الفعاليات',
+                'المشاريع',
+                'انضم إلينا'
+              ].map((link, index) => (
+                <li key={index}>
+                  <a 
+                    href="#" 
+                    className="hover:text-neon-cyan transition-colors duration-300 hover:translate-x-2 transform inline-block"
+                  >
+                    {link}
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
           
+          {/* Contact Info */}
           <div>
-            <h4 className="font-orbitron font-bold text-lg text-white mb-4">
+            <h4 className="font-orbitron font-bold text-xl text-white mb-6 flex items-center">
+              <Zap className="text-neon-purple mr-2" size={20} />
               تواصل معنا
             </h4>
-            <div className="space-y-2 font-poppins text-gray-300">
-              <p>البريد الإلكتروني: info@itclub.com</p>
-              <p>الهاتف: +966 50 123 4567</p>
-              <p>العنوان: الرياض، المملكة العربية السعودية</p>
+            <div className="space-y-4 font-poppins text-gray-300">
+              <div className="group">
+                <p className="text-sm text-gray-400 mb-1">البريد الإلكتروني</p>
+                <p className="text-neon-cyan group-hover:text-neon-blue transition-colors duration-300">
+                  info@digitalminds.com
+                </p>
+              </div>
+              <div className="group">
+                <p className="text-sm text-gray-400 mb-1">الهاتف</p>
+                <p className="text-neon-green group-hover:text-neon-cyan transition-colors duration-300">
+                  +966 50 123 4567
+                </p>
+              </div>
+              <div className="group">
+                <p className="text-sm text-gray-400 mb-1">العنوان</p>
+                <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
+                  الرياض، المملكة العربية السعودية
+                </p>
+              </div>
             </div>
           </div>
         </div>
         
-        <div className="border-t border-gray-700 mt-8 pt-8 text-center">
-          <p className="font-poppins text-gray-400">
-            © 2024 نادي تقنية المعلومات. جميع الحقوق محفوظة.
-          </p>
+        {/* Bottom Section */}
+        <div className="border-t border-gray-700 mt-12 pt-8">
+          <div className="flex flex-col md:flex-row justify-between items-center">
+            <p className="font-poppins text-gray-400 mb-4 md:mb-0">
+              © 2024 Digital Minds. جميع الحقوق محفوظة.
+            </p>
+            <div className="flex items-center space-x-4 text-sm text-gray-400">
+              <span>صنع بـ</span>
+              <span className="text-red-400 animate-pulse">♥</span>
+              <span>من فريق العقول الرقمية</span>
+            </div>
+          </div>
         </div>
       </div>
     </footer>
