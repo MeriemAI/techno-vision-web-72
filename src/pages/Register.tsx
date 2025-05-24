@@ -57,6 +57,9 @@ const Register = () => {
     // Set current user as logged in
     localStorage.setItem('currentUser', JSON.stringify(newUser));
 
+    // Trigger custom event to update members list on the same tab
+    window.dispatchEvent(new CustomEvent('userRegistered'));
+
     toast({
       title: "تم التسجيل بنجاح!",
       description: "مرحباً بك في مجتمع العقول الرقمية",

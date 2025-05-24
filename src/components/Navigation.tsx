@@ -23,6 +23,7 @@ const Navigation = () => {
   const navItems = [
     { name: 'الرئيسية', href: '#home' },
     { name: 'من نحن', href: '#about' },
+    { name: 'الأعضاء', href: '#members' },
     { name: 'الفعاليات', href: '#events' },
     { name: 'المشاريع', href: '#projects' }
   ];
