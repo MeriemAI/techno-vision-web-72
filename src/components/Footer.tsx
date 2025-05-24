@@ -115,10 +115,7 @@ const Footer = () => {
               © 2025 Digital Minds. جميع الحقوق محفوظة.
             </p>
             <div className="flex items-center space-x-4 text-sm text-gray-400">
-              <span style={{
-              fontFamily: 'Noto Sans Arabic, Arial, sans-serif'
-            }} className="text-rose-400 font-semibold text-right mx-0 my-0 py-[2px] px-0 text-base">طور من طرف المطورة مريم بن سعد
- تحت  إشراف الأستاذة حركاتي إخلاص</span>
+              
               <span className="text-red-400 animate-pulse">♥</span>
               <span style={{
               fontFamily: 'Noto Sans Arabic, Arial, sans-serif'
