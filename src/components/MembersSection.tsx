@@ -1,7 +1,8 @@
 
 import React, { useState, useEffect } from 'react';
-import { Users, Crown, Lock } from 'lucide-react';
+import { Users, Crown, Lock, CheckCircle } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import MemberVerificationModal from './MemberVerificationModal';
 
 interface RegisteredUser {
@@ -116,6 +117,11 @@ const MembersSection = () => {
               <span className="text-white font-bold text-lg font-arabic">
                 {predefinedMembers.length} عضو في النادي
               </span>
+              <div className="mx-3 w-px h-6 bg-gray-600"></div>
+              <CheckCircle className="text-green-400 mr-2" size={20} />
+              <span className="text-green-400 font-bold text-sm font-arabic">
+                {registeredUsers.length} مسجل
+              </span>
             </div>
           </div>
 
@@ -127,21 +133,47 @@ const MembersSection = () => {
               return (
                 <div 
                   key={index} 
-                  className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-neon-cyan transition-all duration-500 transform hover:scale-105 group cursor-pointer"
+                  className={`bg-gray-800/40 backdrop-blur-sm border ${
+                    memberIsRegistered 
+                      ? 'border-green-500/50 hover:border-green-400' 
+                      : 'border-gray-700 hover:border-neon-cyan'
+                  } rounded-2xl p-6 transition-all duration-500 transform hover:scale-105 group cursor-pointer relative`}
                   onClick={() => handleMemberClick(member)}
                 >
+                  {/* Registered Badge */}
+                  {memberIsRegistered && (
+                    <div className="absolute -top-2 -right-2 z-10">
+                      <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 shadow-lg">
+                        <CheckCircle size={12} className="mr-1" />
+                        مسجل
+                      </Badge>
+                    </div>
+                  )}
+
                   <div className="text-center">
                     <div className="relative mb-4 mx-auto w-20 h-20">
-                      <Avatar className="w-full h-full border-2 border-neon-cyan/50 group-hover:border-neon-cyan transition-colors">
+                      <Avatar className={`w-full h-full border-2 ${
+                        memberIsRegistered 
+                          ? 'border-green-500/70 group-hover:border-green-400' 
+                          : 'border-neon-cyan/50 group-hover:border-neon-cyan'
+                      } transition-colors`}>
                         {registeredUser?.profileImage ? (
                           <AvatarImage src={registeredUser.profileImage} alt={member.name} />
                         ) : (
-                          <AvatarFallback className="bg-gradient-to-r from-neon-cyan to-neon-purple text-white text-lg font-bold">
+                          <AvatarFallback className={`${
+                            memberIsRegistered 
+                              ? 'bg-gradient-to-r from-green-500 to-green-600' 
+                              : 'bg-gradient-to-r from-neon-cyan to-neon-purple'
+                          } text-white text-lg font-bold`}>
                             {member.name.charAt(0)}
                           </AvatarFallback>
                         )}
                       </Avatar>
-                      <div className="absolute -bottom-1 -right-1 bg-gradient-to-r from-neon-cyan to-neon-blue text-black rounded-full p-1">
+                      <div className={`absolute -bottom-1 -right-1 ${
+                        memberIsRegistered 
+                          ? 'bg-gradient-to-r from-green-500 to-green-600' 
+                          : 'bg-gradient-to-r from-neon-cyan to-neon-blue'
+                      } text-black rounded-full p-1`}>
                         {memberIsRegistered ? <Crown size={12} /> : <Lock size={12} />}
                       </div>
                     </div>
@@ -150,7 +182,9 @@ const MembersSection = () => {
                       {member.name}
                     </h3>
                     
-                    <p className="text-neon-cyan text-sm mb-3 truncate">
+                    <p className={`text-sm mb-3 truncate ${
+                      memberIsRegistered ? 'text-green-400' : 'text-neon-cyan'
+                    }`}>
                       {member.email}
                     </p>
                     
@@ -160,9 +194,15 @@ const MembersSection = () => {
                       </p>
                     )}
                     
-                    <div className="mt-4 px-3 py-1 bg-gradient-to-r from-neon-cyan/20 to-neon-blue/20 border border-neon-cyan/30 rounded-full">
-                      <span className="text-neon-cyan text-xs font-semibold font-arabic">
-                        {memberIsRegistered ? 'عضو مسجل' : 'انقر للتسجيل'}
+                    <div className={`mt-4 px-3 py-1 ${
+                      memberIsRegistered 
+                        ? 'bg-gradient-to-r from-green-500/20 to-green-600/20 border border-green-500/30' 
+                        : 'bg-gradient-to-r from-neon-cyan/20 to-neon-blue/20 border border-neon-cyan/30'
+                    } rounded-full`}>
+                      <span className={`text-xs font-semibold font-arabic ${
+                        memberIsRegistered ? 'text-green-400' : 'text-neon-cyan'
+                      }`}>
+                        {memberIsRegistered ? 'عضو مسجل ✓' : 'انقر للتسجيل'}
                       </span>
                     </div>
                   </div>
