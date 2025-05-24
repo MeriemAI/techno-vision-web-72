@@ -10,11 +10,19 @@ interface MemberData {
   code: string;
 }
 
+interface RegisteredUser {
+  name: string;
+  email: string;
+  profileImage?: string;
+  description?: string;
+  coverPhoto?: string;
+}
+
 interface MemberVerificationModalProps {
   isOpen: boolean;
   onClose: () => void;
   member: MemberData | null;
-  onSuccess: (member: MemberData) => void;
+  onSuccess: (member: RegisteredUser) => void;
 }
 
 const MemberVerificationModal: React.FC<MemberVerificationModalProps> = ({ 
@@ -44,10 +52,10 @@ const MemberVerificationModal: React.FC<MemberVerificationModalProps> = ({
       }
 
       // Register the member
-      const newUser = {
+      const newUser: RegisteredUser = {
         name: member.name,
         email: member.email,
-        profileImage: null,
+        profileImage: undefined,
         description: 'عضو في نادي العقول الرقمية'
       };
 

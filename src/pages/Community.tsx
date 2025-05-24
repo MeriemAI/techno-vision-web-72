@@ -2,14 +2,16 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, Crown, MessageCircle } from 'lucide-react';
+import { ArrowLeft, Users, Crown, MessageCircle, Heart, Share2 } from 'lucide-react';
+import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import EnhancedAnimatedBackground from '@/components/EnhancedAnimatedBackground';
-import MessagingModal from '@/components/MessagingModal';
+import SocialMessagingModal from '@/components/SocialMessagingModal';
 
 interface RegisteredUser {
   name: string;
   email: string;
   profileImage?: string;
+  description?: string;
 }
 
 const Community = () => {
@@ -19,7 +21,7 @@ const Community = () => {
   const [isMessagingOpen, setIsMessagingOpen] = useState(false);
 
   useEffect(() => {
-    // Get all registered users from localStorage - this will include everyone who has registered
+    // Get all registered users from localStorage
     const users = localStorage.getItem('registeredUsers');
     if (users) {
       const allUsers = JSON.parse(users);
@@ -32,11 +34,37 @@ const Community = () => {
     if (loggedInUser) {
       setCurrentUser(JSON.parse(loggedInUser));
     }
+
+    // Listen for storage changes
+    const handleStorageChange = () => {
+      const updatedUsers = localStorage.getItem('registeredUsers');
+      setRegisteredUsers(updatedUsers ? JSON.parse(updatedUsers) : []);
+    };
+
+    window.addEventListener('storage', handleStorageChange);
+    window.addEventListener('userRegistered', handleStorageChange);
+
+    return () => {
+      window.removeEventListener('storage', handleStorageChange);
+      window.removeEventListener('userRegistered', handleStorageChange);
+    };
   }, []);
 
   const handleSendMessage = (user: RegisteredUser) => {
     setSelectedUser(user);
     setIsMessagingOpen(true);
+  };
+
+  const getLastMessageTime = (userEmail: string) => {
+    const messages = JSON.parse(localStorage.getItem('messages') || '[]');
+    const userMessages = messages.filter((msg: any) => 
+      msg.senderId === userEmail || msg.receiverId === userEmail
+    );
+    if (userMessages.length > 0) {
+      const lastMessage = userMessages[userMessages.length - 1];
+      return new Date(lastMessage.timestamp).toLocaleDateString('ar-SA');
+    }
+    return null;
   };
 
   return (
@@ -55,8 +83,15 @@ const Community = () => {
               مجتمع العقول الرقمية
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto font-arabic">
-              تعرف على جميع الأعضاء المسجلين في النادي وتواصل معهم
+              تواصل مع جميع أعضاء النادي واستمتع بتجربة التواصل الاجتماعي
             </p>
+            <div className="mt-6 flex justify-center items-center space-x-4 rtl:space-x-reverse">
+              <div className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-full px-4 py-2">
+                <span className="text-neon-cyan font-bold font-arabic">
+                  {registeredUsers.length} عضو نشط
+                </span>
+              </div>
+            </div>
           </div>
           
           {registeredUsers.length === 0 ? (
@@ -78,57 +113,92 @@ const Community = () => {
             </div>
           ) : (
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-              {registeredUsers.map((user, index) => (
-                <div key={index} className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-neon-cyan transition-all duration-500 transform hover:scale-105">
-                  <div className="text-center">
-                    <div className="relative mb-4 mx-auto w-16 h-16 flex items-center justify-center">
-                      {user.profileImage ? (
-                        <img
-                          src={user.profileImage}
-                          alt={user.name}
-                          className="w-full h-full rounded-full object-cover border-2 border-neon-cyan"
-                        />
-                      ) : (
-                        <div className="w-full h-full rounded-full bg-gradient-to-r from-neon-cyan to-neon-purple flex items-center justify-center">
-                          <Users size={32} className="text-white" />
-                        </div>
+              {registeredUsers.map((user, index) => {
+                const lastMessageTime = getLastMessageTime(user.email);
+                const isCurrentUser = currentUser && currentUser.email === user.email;
+                
+                return (
+                  <div key={index} className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-neon-cyan transition-all duration-500 transform hover:scale-105">
+                    <div className="text-center">
+                      <div className="relative mb-4 mx-auto w-20 h-20">
+                        <Avatar className="w-full h-full border-2 border-neon-cyan/50 hover:border-neon-cyan transition-colors">
+                          {user.profileImage ? (
+                            <AvatarImage src={user.profileImage} alt={user.name} />
+                          ) : (
+                            <AvatarFallback className="bg-gradient-to-r from-neon-cyan to-neon-purple text-white text-lg font-bold">
+                              {user.name.charAt(0)}
+                            </AvatarFallback>
+                          )}
+                        </Avatar>
+                        {isCurrentUser && (
+                          <div className="absolute -top-2 -right-2 bg-yellow-500 text-black rounded-full p-1">
+                            <Crown size={12} />
+                          </div>
+                        )}
+                        <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-green-500 border-2 border-gray-800 rounded-full"></div>
+                      </div>
+                      
+                      <h3 className="text-white font-bold text-lg mb-2 font-arabic">
+                        {user.name}
+                        {isCurrentUser && (
+                          <span className="text-yellow-400 text-sm block">(أنت)</span>
+                        )}
+                      </h3>
+                      
+                      <p className="text-neon-cyan text-sm mb-3">
+                        {user.email}
+                      </p>
+                      
+                      {user.description && (
+                        <p className="text-gray-300 text-xs mb-4 font-arabic line-clamp-2">
+                          {user.description}
+                        </p>
                       )}
-                      {currentUser && currentUser.email === user.email && (
-                        <div className="absolute -top-2 -right-2 bg-yellow-500 text-black rounded-full p-1">
-                          <Crown size={12} />
-                        </div>
-                      )}
-                    </div>
-                    
-                    <h3 className="text-white font-bold text-lg mb-2 font-arabic">
-                      {user.name}
-                      {currentUser && currentUser.email === user.email && (
-                        <span className="text-yellow-500 text-sm block">(أنت)</span>
-                      )}
-                    </h3>
-                    
-                    <p className="text-neon-cyan text-sm mb-4">
-                      {user.email}
-                    </p>
-                    
-                    <p className="text-gray-400 text-xs mb-4 font-arabic">
-                      عضو في النادي
-                    </p>
 
-                    {/* Message Button - only show for other users when current user is logged in */}
-                    {currentUser && currentUser.email !== user.email && (
-                      <Button
-                        onClick={() => handleSendMessage(user)}
-                        size="sm"
-                        className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white font-bold py-2 px-4 rounded-full transition-all duration-300 font-arabic"
-                      >
-                        <MessageCircle size={16} className="ml-1" />
-                        إرسال رسالة
-                      </Button>
-                    )}
+                      {lastMessageTime && !isCurrentUser && (
+                        <p className="text-gray-500 text-xs mb-3 font-arabic">
+                          آخر نشاط: {lastMessageTime}
+                        </p>
+                      )}
+
+                      {/* Social Actions */}
+                      <div className="flex justify-center space-x-2 rtl:space-x-reverse mb-4">
+                        {currentUser && !isCurrentUser && (
+                          <>
+                            <Button
+                              onClick={() => handleSendMessage(user)}
+                              size="sm"
+                              className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white font-bold py-2 px-3 rounded-full transition-all duration-300"
+                            >
+                              <MessageCircle size={14} />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="text-gray-400 hover:text-red-400 transition-colors"
+                            >
+                              <Heart size={14} />
+                            </Button>
+                            <Button
+                              size="sm"
+                              variant="ghost"
+                              className="text-gray-400 hover:text-blue-400 transition-colors"
+                            >
+                              <Share2 size={14} />
+                            </Button>
+                          </>
+                        )}
+                      </div>
+
+                      <div className="px-3 py-1 bg-gradient-to-r from-neon-cyan/20 to-neon-blue/20 border border-neon-cyan/30 rounded-full">
+                        <span className="text-neon-cyan text-xs font-semibold font-arabic">
+                          {isCurrentUser ? 'حسابك' : 'عضو نشط'}
+                        </span>
+                      </div>
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           )}
           
@@ -144,9 +214,9 @@ const Community = () => {
         </div>
       </div>
 
-      {/* Messaging Modal */}
+      {/* Enhanced Social Messaging Modal */}
       {currentUser && selectedUser && (
-        <MessagingModal
+        <SocialMessagingModal
           isOpen={isMessagingOpen}
           onClose={() => setIsMessagingOpen(false)}
           recipient={selectedUser}
