@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import { ArrowLeft, Upload, User } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import EnhancedAnimatedBackground from '@/components/EnhancedAnimatedBackground';
+import { isEmailAllowed } from '@/components/AllowedEmails';
 
 const Register = () => {
   const [name, setName] = useState('');
@@ -31,6 +32,16 @@ const Register = () => {
       toast({
         title: "خطأ",
         description: "يرجى ملء جميع الحقول المطلوبة",
+        variant: "destructive",
+      });
+      return;
+    }
+
+    // Check if email is in the allowed list
+    if (!isEmailAllowed(email)) {
+      toast({
+        title: "غير مصرح",
+        description: "هذا البريد الإلكتروني غير مصرح له بالوصول إلى الموقع",
         variant: "destructive",
       });
       return;
@@ -149,6 +160,9 @@ const Register = () => {
                   placeholder="your@email.com"
                   required
                 />
+                <p className="text-gray-400 text-xs mt-1 font-arabic">
+                  يجب أن يكون البريد الإلكتروني من القائمة المصرح بها
+                </p>
               </div>
 
               <Button
