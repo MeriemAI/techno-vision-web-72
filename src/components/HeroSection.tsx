@@ -1,16 +1,27 @@
+
 import React from 'react';
 import { Button } from '@/components/ui/button';
 import { useNavigate } from 'react-router-dom';
+import { useToast } from '@/hooks/use-toast';
 
 const HeroSection = () => {
   const navigate = useNavigate();
+  const { toast } = useToast();
 
   const handleCreativeWorldClick = () => {
     navigate('/website');
   };
 
   const handleJoinClick = () => {
-    navigate('/register');
+    const currentUser = localStorage.getItem('currentUser');
+    if (currentUser) {
+      toast({
+        title: "مسجل بالفعل",
+        description: "أنت مسجل بالفعل في الموقع",
+      });
+    } else {
+      navigate('/register');
+    }
   };
 
   return (

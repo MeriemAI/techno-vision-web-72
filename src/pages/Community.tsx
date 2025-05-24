@@ -2,8 +2,9 @@
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Users, Crown } from 'lucide-react';
+import { ArrowLeft, Users, Crown, MessageCircle } from 'lucide-react';
 import EnhancedAnimatedBackground from '@/components/EnhancedAnimatedBackground';
+import MessagingModal from '@/components/MessagingModal';
 
 interface RegisteredUser {
   name: string;
@@ -14,6 +15,8 @@ interface RegisteredUser {
 const Community = () => {
   const [registeredUsers, setRegisteredUsers] = useState<RegisteredUser[]>([]);
   const [currentUser, setCurrentUser] = useState<RegisteredUser | null>(null);
+  const [selectedUser, setSelectedUser] = useState<RegisteredUser | null>(null);
+  const [isMessagingOpen, setIsMessagingOpen] = useState(false);
 
   useEffect(() => {
     // Get registered users from localStorage
@@ -28,6 +31,11 @@ const Community = () => {
       setCurrentUser(JSON.parse(loggedInUser));
     }
   }, []);
+
+  const handleSendMessage = (user: RegisteredUser) => {
+    setSelectedUser(user);
+    setIsMessagingOpen(true);
+  };
 
   return (
     <div className="min-h-screen bg-gray-900 relative overflow-x-hidden">
@@ -45,7 +53,7 @@ const Community = () => {
               مجتمع العقول الرقمية
             </h1>
             <p className="text-xl text-gray-300 max-w-3xl mx-auto font-arabic">
-              تعرف على جميع الأعضاء المسجلين في النادي
+              تعرف على جميع الأعضاء المسجلين في النادي وتواصل معهم
             </p>
           </div>
           
@@ -97,13 +105,25 @@ const Community = () => {
                       )}
                     </h3>
                     
-                    <p className="text-neon-cyan text-sm mb-2">
+                    <p className="text-neon-cyan text-sm mb-4">
                       {user.email}
                     </p>
                     
-                    <p className="text-gray-400 text-xs font-arabic">
+                    <p className="text-gray-400 text-xs mb-4 font-arabic">
                       عضو في النادي
                     </p>
+
+                    {/* Message Button - only show for other users when current user is logged in */}
+                    {currentUser && currentUser.email !== user.email && (
+                      <Button
+                        onClick={() => handleSendMessage(user)}
+                        size="sm"
+                        className="bg-gradient-to-r from-neon-blue to-neon-purple hover:from-neon-purple hover:to-neon-blue text-white font-bold py-2 px-4 rounded-full transition-all duration-300 font-arabic"
+                      >
+                        <MessageCircle size={16} className="ml-1" />
+                        إرسال رسالة
+                      </Button>
+                    )}
                   </div>
                 </div>
               ))}
@@ -121,6 +141,16 @@ const Community = () => {
           )}
         </div>
       </div>
+
+      {/* Messaging Modal */}
+      {currentUser && selectedUser && (
+        <MessagingModal
+          isOpen={isMessagingOpen}
+          onClose={() => setIsMessagingOpen(false)}
+          recipient={selectedUser}
+          currentUser={currentUser}
+        />
+      )}
     </div>
   );
 };

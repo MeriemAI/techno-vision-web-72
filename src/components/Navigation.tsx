@@ -71,9 +71,16 @@ const Navigation = () => {
             </div>
             
             <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
-              <span className="text-sm text-gray-300 font-semibold font-arabic">
-                العقول الرقمية - ثانوية بوحارة عبد الرزاق
-              </span>
+              <div className="flex items-center space-x-3 rtl:space-x-reverse">
+                <img 
+                  src="https://images.unsplash.com/photo-1606316270172-4f1b83c6e4b7?w=40&h=40&fit=crop&crop=center" 
+                  alt="Club Logo" 
+                  className="w-10 h-10 rounded-full border-2 border-neon-cyan"
+                />
+                <span className="text-sm text-gray-300 font-semibold font-arabic">
+                  العقول الرقمية - ثانوية بوحارة عبد الرزاق
+                </span>
+              </div>
             </div>
             
             <div className="flex items-center space-x-6 rtl:space-x-reverse">
