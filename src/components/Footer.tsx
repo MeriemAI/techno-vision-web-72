@@ -98,13 +98,19 @@ const Footer = () => {
                 </p>
               </div>
               <div className="group">
-                <p className="text-sm text-gray-400 mb-1" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>فيسبوك</p>
+                <p className="text-sm text-gray-400 mb-1 flex items-center" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+                  <Facebook size={16} className="ml-1 text-blue-500" />
+                  فيسبوك
+                </p>
                 <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
                   Digital Minds
                 </p>
               </div>
               <div className="group">
-                <p className="text-sm text-gray-400 mb-1" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>انستغرام</p>
+                <p className="text-sm text-gray-400 mb-1 flex items-center" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+                  <Instagram size={16} className="ml-1 text-pink-500" />
+                  انستغرام
+                </p>
                 <p className="text-gray-300 group-hover:text-white transition-colors duration-300">
                   Digital Minds
                 </p>

@@ -1,10 +1,10 @@
-
 import React, { useState, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
 import { Button } from '@/components/ui/button';
 import { User, LogOut } from 'lucide-react';
 import UserProfile from './UserProfile';
+import LogoModal from './LogoModal';
 
 interface RegisteredUser {
   name: string;
@@ -17,6 +17,7 @@ interface RegisteredUser {
 const Navigation = () => {
   const [currentUser, setCurrentUser] = useState<RegisteredUser | null>(null);
   const [isProfileOpen, setIsProfileOpen] = useState(false);
+  const [isLogoModalOpen, setIsLogoModalOpen] = useState(false);
   const navigate = useNavigate();
 
   const navItems = [
@@ -61,6 +62,10 @@ const Navigation = () => {
     setCurrentUser(updatedUser);
   };
 
+  const handleLogoClick = () => {
+    setIsLogoModalOpen(true);
+  };
+
   return (
     <>
       <nav className="fixed top-0 left-0 right-0 z-50 bg-gray-900/90 backdrop-blur-sm border-b border-gray-700 py-4 px-4 sm:px-6 lg:px-8">
@@ -75,7 +80,8 @@ const Navigation = () => {
                 <img 
                   src="/lovable-uploads/a632fae9-732e-43b4-9f6d-379129daa088.png" 
                   alt="Digital Minds Logo" 
-                  className="w-10 h-10 rounded-full border-2 border-neon-cyan"
+                  className="w-10 h-10 rounded-full border-2 border-neon-cyan cursor-pointer hover:border-neon-blue transition-colors"
+                  onClick={handleLogoClick}
                 />
                 <span className="text-sm text-gray-300 font-semibold font-arabic">
                   العقول الرقمية - ثانوية بوحارة عبد الرزاق
@@ -147,6 +153,12 @@ const Navigation = () => {
           onUserUpdate={handleUserUpdate}
         />
       )}
+
+      {/* Logo Modal */}
+      <LogoModal
+        isOpen={isLogoModalOpen}
+        onClose={() => setIsLogoModalOpen(false)}
+      />
     </>
   );
 };
