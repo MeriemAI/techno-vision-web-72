@@ -7,11 +7,9 @@ const TeamSection = () => {
   const [showMales, setShowMales] = useState(false);
 
   const femaleMembers = [
-    "الأستاذة حركاتي إخلاص",
     "مريم بن سعد", 
     "بن مداني توبة هبة الرحمان",
     "ألاء بولعروق",
-    "ظريف رحمة أسيل",
     "رزين أماني",
     "زرمان مروى",
     "عمراني دعاء",
@@ -25,7 +23,8 @@ const TeamSection = () => {
     "جبلي يوسف",
     "زايدي يوسف", 
     "حاجي عمر",
-    "حداد لؤي"
+    "حداد لؤي",
+    "عبد الله"
   ];
 
   return (
@@ -58,7 +57,7 @@ const TeamSection = () => {
                 
                 <div className="bg-gray-900/30 backdrop-blur-sm border border-gray-600 rounded-xl p-4">
                   <p className="text-white text-lg font-bold arabic-font">
-                    رائد بولخرفان
+                    الاستاذة حركاتي اخلاص
                   </p>
                 </div>
               </div>

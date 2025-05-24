@@ -57,7 +57,7 @@ const ProjectsSection = () => {
             </span>
           </h2>
           <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
-            استكشف المشاريع المبتكرة التي طورها أعضاء النادي
+            Explore innovative projects developed by club members
           </p>
         </div>
 
