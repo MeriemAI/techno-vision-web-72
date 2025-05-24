@@ -117,8 +117,9 @@ const Footer = () => {
             <div className="flex items-center space-x-4 text-sm text-gray-400">
               <span style={{
               fontFamily: 'Noto Sans Arabic, Arial, sans-serif'
-            }} className="text-center text-base text-rose-400 font-semibold">صنع من طرف المطورة مريم بن سعد
-تحت إشراف الأستاذة حركاتي إخلاص</span>
+            }} className="text-center text-base text-rose-400 font-semibold">طور من طرف المطورة مريم بن سعد تحت
+
+ إشراف الأستاذة حركاتي إخلاص</span>
               <span className="text-red-400 animate-pulse">♥</span>
               <span style={{
               fontFamily: 'Noto Sans Arabic, Arial, sans-serif'
