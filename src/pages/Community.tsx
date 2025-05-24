@@ -19,10 +19,12 @@ const Community = () => {
   const [isMessagingOpen, setIsMessagingOpen] = useState(false);
 
   useEffect(() => {
-    // Get registered users from localStorage
+    // Get all registered users from localStorage - this will include everyone who has registered
     const users = localStorage.getItem('registeredUsers');
     if (users) {
-      setRegisteredUsers(JSON.parse(users));
+      const allUsers = JSON.parse(users);
+      console.log('All registered users from localStorage:', allUsers);
+      setRegisteredUsers(allUsers);
     }
 
     // Get current logged-in user
@@ -130,7 +132,7 @@ const Community = () => {
             </div>
           )}
           
-          {!currentUser && (
+          {!currentUser && registeredUsers.length > 0 && (
             <div className="text-center mt-12">
               <Link to="/register">
                 <Button className="bg-gradient-to-r from-neon-cyan via-neon-blue to-neon-purple hover:from-neon-purple hover:via-neon-blue hover:to-neon-cyan text-black font-bold py-4 px-8 rounded-full neon-glow transition-all duration-500 transform hover:scale-110 text-lg font-arabic">

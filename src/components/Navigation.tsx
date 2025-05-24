@@ -73,8 +73,8 @@ const Navigation = () => {
             <div className="hidden md:flex items-center space-x-8 rtl:space-x-reverse">
               <div className="flex items-center space-x-3 rtl:space-x-reverse">
                 <img 
-                  src="https://images.unsplash.com/photo-1606316270172-4f1b83c6e4b7?w=40&h=40&fit=crop&crop=center" 
-                  alt="Club Logo" 
+                  src="/lovable-uploads/a632fae9-732e-43b4-9f6d-379129daa088.png" 
+                  alt="Digital Minds Logo" 
                   className="w-10 h-10 rounded-full border-2 border-neon-cyan"
                 />
                 <span className="text-sm text-gray-300 font-semibold font-arabic">
