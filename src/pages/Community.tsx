@@ -1,9 +1,9 @@
-
 import React, { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
 import { Link } from 'react-router-dom';
 import { ArrowLeft, Users, Crown, MessageCircle, Heart, Share2 } from 'lucide-react';
 import { Avatar, AvatarImage, AvatarFallback } from '@/components/ui/avatar';
+import { Badge } from '@/components/ui/badge';
 import EnhancedAnimatedBackground from '@/components/EnhancedAnimatedBackground';
 import SocialMessagingModal from '@/components/SocialMessagingModal';
 
@@ -19,6 +19,7 @@ const Community = () => {
   const [currentUser, setCurrentUser] = useState<RegisteredUser | null>(null);
   const [selectedUser, setSelectedUser] = useState<RegisteredUser | null>(null);
   const [isMessagingOpen, setIsMessagingOpen] = useState(false);
+  const [onlineUsers, setOnlineUsers] = useState<Set<string>>(new Set());
 
   useEffect(() => {
     // Get all registered users from localStorage
@@ -32,7 +33,14 @@ const Community = () => {
     // Get current logged-in user
     const loggedInUser = localStorage.getItem('currentUser');
     if (loggedInUser) {
-      setCurrentUser(JSON.parse(loggedInUser));
+      const user = JSON.parse(loggedInUser);
+      setCurrentUser(user);
+      // Mark current user as online
+      setOnlineUsers(prev => new Set([...prev, user.email]));
+      
+      // Update last seen timestamp
+      const now = Date.now();
+      localStorage.setItem(`lastSeen_${user.email}`, now.toString());
     }
 
     // Listen for storage changes
@@ -41,14 +49,44 @@ const Community = () => {
       setRegisteredUsers(updatedUsers ? JSON.parse(updatedUsers) : []);
     };
 
+    // Update online status periodically
+    const updateOnlineStatus = () => {
+      const now = Date.now();
+      const fiveMinutesAgo = now - (5 * 60 * 1000); // 5 minutes threshold
+      const newOnlineUsers = new Set<string>();
+
+      // Check all registered users for recent activity
+      registeredUsers.forEach(user => {
+        const lastSeen = localStorage.getItem(`lastSeen_${user.email}`);
+        if (lastSeen && parseInt(lastSeen) > fiveMinutesAgo) {
+          newOnlineUsers.add(user.email);
+        }
+      });
+
+      setOnlineUsers(newOnlineUsers);
+    };
+
+    // Update online status every 30 seconds
+    const intervalId = setInterval(updateOnlineStatus, 30000);
+
+    // Update current user's timestamp every 2 minutes
+    const heartbeatId = setInterval(() => {
+      if (currentUser) {
+        const now = Date.now();
+        localStorage.setItem(`lastSeen_${currentUser.email}`, now.toString());
+      }
+    }, 120000); // 2 minutes
+
     window.addEventListener('storage', handleStorageChange);
     window.addEventListener('userRegistered', handleStorageChange);
 
     return () => {
       window.removeEventListener('storage', handleStorageChange);
       window.removeEventListener('userRegistered', handleStorageChange);
+      clearInterval(intervalId);
+      clearInterval(heartbeatId);
     };
-  }, []);
+  }, [registeredUsers, currentUser]);
 
   const handleSendMessage = (user: RegisteredUser) => {
     setSelectedUser(user);
@@ -65,6 +103,14 @@ const Community = () => {
       return new Date(lastMessage.timestamp).toLocaleDateString('ar-SA');
     }
     return null;
+  };
+
+  const isUserOnline = (userEmail: string) => {
+    return onlineUsers.has(userEmail);
+  };
+
+  const getOnlineCount = () => {
+    return onlineUsers.size;
   };
 
   return (
@@ -91,6 +137,14 @@ const Community = () => {
                   {registeredUsers.length} عضو نشط
                 </span>
               </div>
+              <div className="bg-gray-800/40 backdrop-blur-sm border border-green-500/50 rounded-full px-4 py-2">
+                <div className="flex items-center space-x-2 rtl:space-x-reverse">
+                  <div className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></div>
+                  <span className="text-green-400 font-bold font-arabic">
+                    {getOnlineCount()} متصل الآن
+                  </span>
+                </div>
+              </div>
             </div>
           </div>
           
@@ -116,9 +170,20 @@ const Community = () => {
               {registeredUsers.map((user, index) => {
                 const lastMessageTime = getLastMessageTime(user.email);
                 const isCurrentUser = currentUser && currentUser.email === user.email;
+                const userIsOnline = isUserOnline(user.email);
                 
                 return (
-                  <div key={index} className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-neon-cyan transition-all duration-500 transform hover:scale-105">
+                  <div key={index} className="bg-gray-800/40 backdrop-blur-sm border border-gray-700 rounded-2xl p-6 hover:border-neon-cyan transition-all duration-500 transform hover:scale-105 relative">
+                    {/* Online Badge */}
+                    {userIsOnline && (
+                      <div className="absolute -top-2 -right-2 z-10">
+                        <Badge className="bg-green-500 hover:bg-green-600 text-white border-0 shadow-lg animate-pulse">
+                          <div className="w-2 h-2 bg-white rounded-full mr-1"></div>
+                          متصل
+                        </Badge>
+                      </div>
+                    )}
+
                     <div className="text-center">
                       <div className="relative mb-4 mx-auto w-20 h-20">
                         <Avatar className="w-full h-full border-2 border-neon-cyan/50 hover:border-neon-cyan transition-colors">
@@ -135,7 +200,10 @@ const Community = () => {
                             <Crown size={12} />
                           </div>
                         )}
-                        <div className="absolute -bottom-1 -left-1 w-4 h-4 bg-green-500 border-2 border-gray-800 rounded-full"></div>
+                        {/* Online Status Indicator */}
+                        <div className={`absolute -bottom-1 -left-1 w-4 h-4 border-2 border-gray-800 rounded-full ${
+                          userIsOnline ? 'bg-green-500 animate-pulse' : 'bg-gray-500'
+                        }`}></div>
                       </div>
                       
                       <h3 className="text-white font-bold text-lg mb-2 font-arabic">
@@ -155,11 +223,20 @@ const Community = () => {
                         </p>
                       )}
 
-                      {lastMessageTime && !isCurrentUser && (
-                        <p className="text-gray-500 text-xs mb-3 font-arabic">
-                          آخر نشاط: {lastMessageTime}
-                        </p>
-                      )}
+                      {/* Online Status Text */}
+                      <div className="mb-3">
+                        {userIsOnline ? (
+                          <span className="text-green-400 text-xs font-bold font-arabic">
+                            متصل الآن
+                          </span>
+                        ) : (
+                          lastMessageTime && !isCurrentUser && (
+                            <p className="text-gray-500 text-xs font-arabic">
+                              آخر نشاط: {lastMessageTime}
+                            </p>
+                          )
+                        )}
+                      </div>
 
                       {/* Social Actions */}
                       <div className="flex justify-center space-x-2 rtl:space-x-reverse mb-4">
