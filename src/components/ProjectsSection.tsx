@@ -27,7 +27,12 @@ const ProjectsSection = () => {
       title: "الشعارات",
       description: "تصميم الهويات البصرية والشعارات",
       image: "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=400",
-      projects: ["شعار النادي الجديد", "هوية الفعاليات", "تصاميم وسائل التواصل"]
+      projects: ["شعار النادي للطالب يوسف جبلي", "شعار الجزري للطالب عبدالله", "شعار قسطنطين لمريم بن سعد"],
+      projectImages: [
+        "/lovable-uploads/7396f1fd-91ec-49c7-95e4-072ffe8089b4.png",
+        "/lovable-uploads/304fbf61-8f34-4a77-84cf-c4f66503e8e8.png",
+        "/lovable-uploads/2fef6b93-2803-4e61-94e7-52fb65e62868.png"
+      ]
     },
     {
       title: "الفيديوهات التعليمية",
