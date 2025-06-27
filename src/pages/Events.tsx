@@ -18,15 +18,6 @@ const Events = () => {
             العودة للصفحة الرئيسية
           </Link>
           
-          <div className="text-center mb-12">
-            <h1 className="font-orbitron font-bold text-4xl sm:text-5xl md:text-6xl text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-400 mb-6">
-              فعاليات العقول الرقمية
-            </h1>
-            <p className="text-xl text-gray-300 max-w-3xl mx-auto arabic-font">
-              تعرف على جميع الفعاليات والأنشطة القادمة
-            </p>
-          </div>
-          
           <EventsSection />
         </div>
       </div>

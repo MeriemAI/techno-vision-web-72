@@ -393,6 +393,93 @@ body {
   }
 }
 
+/* New dynamic background animations */
+@keyframes rainbow-bg {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+@keyframes section-glow {
+  0%, 100% {
+    box-shadow: inset 0 0 50px rgba(0, 255, 255, 0.1);
+  }
+  50% {
+    box-shadow: inset 0 0 100px rgba(255, 0, 255, 0.2);
+  }
+}
+
+@keyframes slide-in-right {
+  0% {
+    transform: translateX(100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes slide-in-left {
+  0% {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scale-up {
+  0% {
+    transform: scale(0.8);
+    opacity: 0;
+  }
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+}
+
+/* Section-specific animations */
+.section-animated {
+  animation: section-glow 8s ease-in-out infinite;
+}
+
+.animate-fade-in {
+  animation: fade-in 0.8s ease-out forwards;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.6s ease-out forwards;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.6s ease-out forwards;
+}
+
+.animate-scale-up {
+  animation: scale-up 0.5s ease-out forwards;
+}
+
 /* Elegant Arabic font class - consistent across the site */
 .font-arabic {
   font-family: 'Tajawal', 'Cairo', 'Noto Sans Arabic', 'Arial', sans-serif;
@@ -423,4 +510,28 @@ body {
   background-size: 400% 400%;
   animation: rainbow-bg 15s ease infinite;
   z-index: -3;
+}
+
+/* Enhanced section backgrounds */
+section {
+  position: relative;
+  overflow: hidden;
+}
+
+section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(0, 255, 255, 0.03) 0%, transparent 50%);
+  animation: glow-pulse 10s ease-in-out infinite alternate;
+  pointer-events: none;
+  z-index: 0;
+}
+
+section:nth-child(even)::before {
+  background: radial-gradient(circle at 50% 50%, rgba(255, 0, 255, 0.03) 0%, transparent 50%);
+  animation-delay: -5s;
 }
