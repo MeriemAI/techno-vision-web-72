@@ -25,7 +25,8 @@ const EventsSection = () => {
       date: "قريباً",
       description: "كيفية حماية البيانات والأنظمة من الهجمات",
       purpose: "محاضرة توعوية حول أهمية الأمن السيبراني وكيفية حماية المعلومات الشخصية والمؤسسية من التهديدات الرقمية.",
-      status: "قريباً"
+      status: "قريباً",
+      image: "/lovable-uploads/b33fa40a-810e-47f6-b357-40a7387c818d.png"
     }
   ];
 
@@ -53,6 +54,16 @@ const EventsSection = () => {
               key={index}
               className="bg-gradient-to-br from-gray-800/70 to-gray-900/70 backdrop-blur-sm border border-gray-600 rounded-xl p-6 hover:border-neon-cyan transition-all duration-300 transform hover:scale-105 hover:shadow-xl hover:shadow-neon-cyan/20"
             >
+              {event.image && (
+                <div className="mb-4 rounded-lg overflow-hidden">
+                  <img 
+                    src={event.image} 
+                    alt={event.title}
+                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                  />
+                </div>
+              )}
+              
               <div className="flex items-center mb-4">
                 <Calendar className="text-neon-cyan mr-3" size={24} />
                 <span className="font-orbitron text-sm text-neon-cyan font-semibold">
