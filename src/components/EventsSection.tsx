@@ -11,7 +11,8 @@ const EventsSection = () => {
       date: "قريباً",
       description: "تعلم أساسيات التعلم الآلي وتطبيقاته العملية",
       purpose: "تهدف هذه الورشة إلى تعليم الطلاب المفاهيم الأساسية للذكاء الاصطناعي وكيفية تطبيقها في مشاريع عملية مفيدة للمجتمع.",
-      status: "قريباً"
+      status: "قريباً",
+      image: "/lovable-uploads/f67dc312-c08c-49ba-9358-b493a89b4373.png"
     },
     {
       title: "مسابقة الروبوتيات",
@@ -59,7 +60,7 @@ const EventsSection = () => {
                   <img 
                     src={event.image} 
                     alt={event.title}
-                    className="w-full h-48 object-cover hover:scale-105 transition-transform duration-300"
+                    className="w-full object-cover hover:scale-105 transition-transform duration-300"
                   />
                 </div>
               )}
