@@ -9,13 +9,19 @@ const ProjectsSection = () => {
       title: "البرمجة",
       description: "مشاريع تطوير البرمجيات والتطبيقات",
       image: "https://images.unsplash.com/photo-1461749280684-dccba630e2f6?w=400",
-      projects: ["تطبيق إدارة المهام", "موقع المدرسة الإلكتروني", "نظام المكتبة الذكي"]
+      projects: ["موقع المدرسة الثانوية - طوره الطالب يوسف جبلي", "موقع النادي - طورته الطالبة مريم بن سعد"]
     },
     {
       title: "المونتاج",
       description: "مشاريع تحرير الفيديو والمحتوى البصري",
       image: "https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?w=400",
-      projects: ["فيديو تعريفي بالنادي", "مونتاج الفعاليات", "إعلانات المسابقات"]
+      projects: ["فيديو عن الطائرة الدرون", "فيديو عن الواقع الافتراضي والمعزز", "فيديو عن تاريخ مايكروسوفت", "مشاريع أخرى"],
+      projectImages: [
+        "/lovable-uploads/38904ef5-633d-46e9-a045-1946a832fb5f.png",
+        "/lovable-uploads/cbb9ea77-c1bc-4a2f-b9b4-184eeef3a583.png", 
+        "/lovable-uploads/c56878d5-677e-4ebb-8c52-88df85ec6022.png",
+        "/lovable-uploads/7492eca3-f835-4e73-bdfe-43f8e43bb5c3.png"
+      ]
     },
     {
       title: "الشعارات",
@@ -56,8 +62,8 @@ const ProjectsSection = () => {
               مشاريع الأعضاء
             </span>
           </h2>
-          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
-            Explore innovative projects developed by club members
+          <p className="text-lg sm:text-xl text-gray-300 max-w-2xl mx-auto font-arabic">
+            استكشف المشاريع المبتكرة التي طورها أعضاء النادي
           </p>
         </div>
 
@@ -81,17 +87,26 @@ const ProjectsSection = () => {
                   {category.title}
                 </h3>
                 
-                <p className="text-gray-300 text-sm mb-4 leading-relaxed" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
+                <p className="text-gray-300 text-sm mb-4 leading-relaxed font-arabic">
                   {category.description}
                 </p>
 
                 {selectedCategory === category.title && (
                   <div className="bg-gray-900/50 rounded-lg p-4 mb-4 border border-neon-green/30">
-                    <h4 className="text-neon-green font-semibold mb-2" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>المشاريع:</h4>
-                    <ul className="space-y-1">
+                    <h4 className="text-neon-green font-semibold mb-2 font-arabic">المشاريع:</h4>
+                    <ul className="space-y-3">
                       {category.projects.map((project, projectIndex) => (
-                        <li key={projectIndex} className="text-gray-300 text-sm" style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}>
-                          • {project}
+                        <li key={projectIndex} className="font-arabic">
+                          {category.projectImages && category.projectImages[projectIndex] && (
+                            <div className="mb-2">
+                              <img 
+                                src={category.projectImages[projectIndex]} 
+                                alt={project}
+                                className="w-full object-cover rounded-lg hover:scale-105 transition-transform duration-300"
+                              />
+                            </div>
+                          )}
+                          <span className="text-gray-300 text-sm">• {project}</span>
                         </li>
                       ))}
                     </ul>
@@ -100,8 +115,7 @@ const ProjectsSection = () => {
                 
                 <button 
                   onClick={() => showProjects(category.title)}
-                  className="w-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 border border-neon-green text-neon-green py-2 px-4 rounded-lg hover:from-neon-green hover:to-neon-cyan hover:text-black transition-all duration-300 font-semibold"
-                  style={{fontFamily: 'Noto Sans Arabic, Arial, sans-serif'}}
+                  className="w-full bg-gradient-to-r from-neon-green/20 to-neon-cyan/20 border border-neon-green text-neon-green py-2 px-4 rounded-lg hover:from-neon-green hover:to-neon-cyan hover:text-black transition-all duration-300 font-semibold font-arabic"
                 >
                   {selectedCategory === category.title ? 'إخفاء المشاريع' : 'عرض المشاريع'}
                 </button>
